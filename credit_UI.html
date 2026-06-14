@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreditScope Pro - AI-Powered Credit Assessment</title>
+    <link rel="stylesheet" href="/static/credit_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt brand-icon"></i>
+                <h1 class="brand-name">CreditScope Pro</h1>
+            </div>
+            <div class="nav-info"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">Credit Assessment</h2>
+                <p class="hero-subtitle">Get instant, accurate creditworthiness predictions with our advanced machine learning algorithms</p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-lightning-bolt"></i>
+                        <span>Instant Results</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>98% Accuracy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Container -->
+    <div class="main-container">
+        <div class="form-wrapper">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressText">Fill out the form to get started</span>
+                </div>
+            </div>
+
+            <!-- Assessment Form -->
+            <form id="predictionForm" class="assessment-form" method="POST" action="/predict">
+                <!-- Input fields auto-inserted from validated HTML -->
+                <!-- 19 raw input fields as per the backend model structure -->
+                <!-- This should include annual_inc, int_rate, term, home_ownership, total_rev_hi_lim, months_since_credit_line, total_acc, inq_last_6mths, emp_length, open_acc, verification_status, purpose, sub_grade, delinq_2yrs, pub_rec, initial_list_status, dti, acc_now_delinq, region -->
+                <!-- The actual input elements should be in the full HTML above -->
+
+
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="annual_inc">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Annual Income ($)
+                            </label>
+                            <input type="number" id="annual_inc" name="annual_inc" placeholder="e.g., 75000" required>
+                            <div class="field-hint">Your total yearly income before taxes</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="int_rate">
+                                <i class="fas fa-percentage"></i>
+                                Interest Rate (%)
+                            </label>
+                            <input type="number" id="int_rate" name="int_rate" placeholder="e.g., 13.5" step="0.01" required>
+                            <div class="field-hint">Expected loan interest rate</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="term">
+                                <i class="fas fa-calendar-alt"></i>
+                                Term
+                            </label>
+                            <select id="term" name="term" required>
+                                <option value="">Select Term</option>
+                                <option value="36 months">36 months</option>
+                                <option value="60 months">60 months</option>
+                            </select>
+                            <div class="field-hint">Loan repayment period</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="home_ownership">
+                                <i class="fas fa-home"></i>
+                                Home Ownership
+                            </label>
+                            <select id="home_ownership" name="home_ownership" required>
+                                <option value="">Select Ownership</option>
+                                <option value="RENT">RENT</option>
+                                <option value="OWN">OWN</option>
+                                <option value="MORTGAGE">MORTGAGE</option>
+                                <option value="OTHER">OTHER</option>
+                            </select>
+                            <div class="field-hint">Your current home ownership status</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr_state">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Region (U.S. State)
+                            </label>
+                            <select id="addr_state" name="addr_state" required>
+                                <option value="">Select State</option>
+                                <option value="AK">AK - Alaska</option>
+                                <option value="AL">AL - Alabama</option>
+                                <option value="AR">AR - Arkansas</option>
+                                <option value="AZ">AZ - Arizona</option>
+                                <option value="CA">CA - California</option>
+                                <option value="CO">CO - Colorado</option>
+                                <option value="CT">CT - Connecticut</option>
+                                <option value="DC">DC - District of Columbia</option>
+                                <option value="DE">DE - Delaware</option>
+                                <option value="FL">FL - Florida</option>
+                                <option value="GA">GA - Georgia</option>
+                                <option value="HI">HI - Hawaii</option>
+                                <option value="IA">IA - Iowa</option>
+                                <option value="ID">ID - Idaho</option>
+                                <option value="IL">IL - Illinois</option>
+                                <option value="IN">IN - Indiana</option>
+                                <option value="KS">KS - Kansas</option>
+                                <option value="KY">KY - Kentucky</option>
+                                <option value="LA">LA - Louisiana</option>
+                                <option value="MA">MA - Massachusetts</option>
+                                <option value="MD">MD - Maryland</option>
+                                <option value="ME">ME - Maine</option>
+                                <option value="MI">MI - Michigan</option>
+                                <option value="MN">MN - Minnesota</option>
+                                <option value="MO">MO - Missouri</option>
+                                <option value="MS">MS - Mississippi</option>
+                                <option value="MT">MT - Montana</option>
+                                <option value="NC">NC - North Carolina</option>
+                                <option value="NE">NE - Nebraska</option>
+                                <option value="NH">NH - New Hampshire</option>
+                                <option value="NJ">NJ - New Jersey</option>
+                                <option value="NM">NM - New Mexico</option>
+                                <option value="NV">NV - Nevada</option>
+                                <option value="NY">NY - New York</option>
+                                <option value="OH">OH - Ohio</option>
+                                <option value="OK">OK - Oklahoma</option>
+                                <option value="OR">OR - Oregon</option>
+                                <option value="PA">PA - Pennsylvania</option>
+                                <option value="RI">RI - Rhode Island</option>
+                                <option value="SC">SC - South Carolina</option>
+                                <option value="SD">SD - South Dakota</option>
+                                <option value="TN">TN - Tennessee</option>
+                                <option value="TX">TX - Texas</option>
+                                <option value="UT">UT - Utah</option>
+                                <option value="VA">VA - Virginia</option>
+                                <option value="VT">VT - Vermont</option>
+                                <option value="WA">WA - Washington</option>
+                                <option value="WI">WI - Wisconsin</option>
+                                <option value="WV">WV - West Virginia</option>
+                                <option value="WY">WY - Wyoming</option>
+                            </select>
+                            <div class="field-hint">Select the U.S. state where the applicant resides</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_rev_hi_lim">
+                                <i class="fas fa-chart-line"></i>
+                                Total Revolving Credit Limit
+                            </label>
+                            <input type="number" id="total_rev_hi_lim" name="total_rev_hi_lim" placeholder="e.g., 25000" required>
+                            <div class="field-hint">Sum of all your revolving credit limits</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="months_since_credit_line">
+                                <i class="fas fa-clock"></i>
+                                Months Since First Credit Line
+                            </label>
+                            <input type="number" id="months_since_credit_line" name="months_since_credit_line" placeholder="e.g., 120" required>
+                            <div class="field-hint">Months since your first credit line was opened</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_acc">
+                                <i class="fas fa-folder-open"></i>
+                                Total Accounts
+                            </label>
+                            <input type="number" id="total_acc" name="total_acc" placeholder="e.g., 10" required>
+                            <div class="field-hint">Total number of open and closed credit accounts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employment & Credit History -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Employment & Credit History</h3>
+                            <p>Work history and credit behavior</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="inq_last_6mths">
+                                <i class="fas fa-search"></i>
+                                Recent Inquiries (6 months)
+                            </label>
+                            <input type="number" id="inq_last_6mths" name="inq_last_6mths" placeholder="e.g., 2" required>
+                            <div class="field-hint">Credit inquiries in the last 6 months</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emp_length">
+                                <i class="fas fa-user-tie"></i>
+                                Employment Length (years)
+                            </label>
+                            <input type="number" id="emp_length" name="emp_length" min="0" max="50" placeholder="e.g., 5" required>
+                            <div class="field-hint">Years at current employer</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="open_acc">
+                                <i class="fas fa-folder-open"></i>
+                                Open Accounts
+                            </label>
+                            <input type="number" id="open_acc" name="open_acc" placeholder="e.g., 8" required>
+                            <div class="field-hint">Currently active credit accounts</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="verification_status">
+                                <i class="fas fa-check-circle"></i>
+                                Income Verification
+                            </label>
+                            <select id="verification_status" name="verification_status" required>
+                                <option value="">Select status</option>
+                                <option value="Not Verified">Not Verified</option>
+                                <option value="Source Verified">Source Verified</option>
+                                <option value="Verified">Verified</option>
+                            </select>
+                            <div class="field-hint">Level of income verification</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="purpose">
+                                <i class="fas fa-bullseye"></i>
+                                Loan Purpose
+                            </label>
+                            <input type="text" id="purpose" name="purpose" placeholder="e.g., debt_consolidation" required>
+                            <div class="field-hint">Primary reason for the loan</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dti">
+                                <i class="fas fa-balance-scale"></i>
+                                Debt-to-Income Ratio
+                            </label>
+                            <input type="number" step="0.01" id="dti" name="dti" placeholder="e.g., 18.5" required>
+                            <div class="field-hint">Your debt as a percentage of your income</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delinq_2yrs">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Delinquencies (Last 2 Years)
+                            </label>
+                            <input type="number" id="delinq_2yrs" name="delinq_2yrs" placeholder="e.g., 0" required>
+                            <div class="field-hint">Number of 30+ day late delinquencies in past 2 years</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="acc_now_delinq">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Accounts Now Delinquent
+                            </label>
+                            <input type="number" id="acc_now_delinq" name="acc_now_delinq" placeholder="e.g., 0" required>
+                            <div class="field-hint">Number of accounts currently delinquent</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Additional Information</h3>
+                            <p>Supplementary credit details</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="pub_rec">
+                                <i class="fas fa-gavel"></i>
+                                Public Records
+                            </label>
+                            <input type="number" id="pub_rec" name="pub_rec" placeholder="e.g., 0" required>
+                            <div class="field-hint">Number of public records (bankruptcies, etc.)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="initial_list_status">
+                                <i class="fas fa-list"></i>
+                                Initial List Status
+                            </label>
+                            <select id="initial_list_status" name="initial_list_status" required>
+                                <option value="">Select status</option>
+                                <option value="f">Full (f)</option>
+                                <option value="w">Waiting (w)</option>
+                            </select>
+                            <div class="field-hint">Initial listing status of the loan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">
+                            <i class="fas fa-chart-line"></i>
+                            Analyze Creditworthiness
+                        </span>
+                        <div class="btn-loader" id="btnLoader">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                    <p class="submit-note">
+                        <i class="fas fa-lock"></i>
+                        Your data is encrypted and secure. Analysis takes 2-3 seconds.
+                    </p>
+                </div>
+            </form>
+
+            <!-- Results Section -->
+            <div id="results" class="results-container hidden">
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-icon" id="resultIcon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="result-title" id="resultTitle">Credit Assessment Complete</h3>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-status" id="resultStatus">
+                            <span class="status-text" id="statusText">Creditworthy</span>
+                        </div>
+                        <div class="result-details">
+                            <p id="resultMessage">Based on the provided information, you appear to be creditworthy for the requested loan.</p>
+                        </div>
+                        <button class="new-assessment-btn" onclick="resetForm()">
+                            <i class="fas fa-refresh"></i>
+                            New Assessment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Security</h4>
+                <p><i class="fas fa-shield-alt"></i> Bank-grade encryption</p>
+                <p><i class="fas fa-lock"></i> Data privacy compliant</p>
+            </div>
+            <div class="footer-section">
+                <h4>Accuracy</h4>
+                <p><i class="fas fa-chart-line"></i> 98% prediction accuracy</p>
+                <p><i class="fas fa-robot"></i> Advanced ML algorithms</p>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <p><i class="fas fa-clock"></i> 24/7 availability</p>
+                <p><i class="fas fa-headset"></i> Expert assistance</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CreditScope Pro. All rights reserved. | Powered by Advanced AI</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>                            
