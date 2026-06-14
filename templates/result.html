@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Assessment Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .result-container h1 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .result-box {
+            padding: 28px;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .creditworthy {
+            color: #059669;
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .not-creditworthy {
+            color: #dc2626;
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .back-button {
+            margin-top: 32px;
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #3b82f6;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>📊 Credit Assessment Result</h1>
+
+        <div class="result-box">
+            <span class="{% if credit_status == 'Creditworthy' %}creditworthy{% else %}not-creditworthy{% endif %}">
+                {{ credit_status }}
+            </span>
+        </div>
+
+        <a href="/" class="back-button">← Back to Form</a>
+    </div>
+</body>
+</html>
