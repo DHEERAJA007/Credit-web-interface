@@ -38,12 +38,7 @@ Credit-Risk-Assessment/
 ├── main.py
 ├── credit_UI.html
 ├── result.html
-├── model/
-│   ├── trained_model.pkl
-│   └── scorecard.pkl
-├── static/
-├── templates/
-├── requirements.txt
+├── credit-risk-prediction_changed.ipynb
 └── README.md
 ```
 
